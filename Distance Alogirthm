@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char c1[] = {'A', 'I', 'H', 'K', '\0'};
+    char c2[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'};
+    int doj[] = {8, 10, 12, 6};
+    int delay[5][12], pre[12];
+    int i, j, min, res, k = 0, l = 0;
+
+    // Input delays
+    for (i = 0; i < 4; i++) {
+        for (j = 0; j < 12; j++) {
+            printf("Enter delay from %c to %c: ", c1[i], c2[j]);
+            scanf("%d", &delay[i][j]);
+        }
+    }
+
+    // Calculate minimum delay
+    for (j = 0; j < 12; j++) {
+        min = 1000;
+        for (i = 0; i < 4; i++) {
+            res = delay[i][j] + doj[i];
+            if (res < min) {
+                min = res;
+                k = i;
+            }
+        }
+        delay[4][j] = min;
+        pre[l++] = k;
+    }
+
+    // Output results
+    for (i = 0; i < 12; i++) {
+        printf("Delay to %c is %d", c2[i], delay[4][i]);
+        if (i != 9) {
+            printf("\tby the mode %c\n", c1[pre[i]]);
+        } else {
+            printf("\tby the node\n");
+        }
+    }
+
+    return 0;
+}
