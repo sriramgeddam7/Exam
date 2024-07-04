@@ -1,0 +1,48 @@
+-- Create departments table
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(50)
+);
+
+-- Create employees table
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    employee_name VARCHAR(50),
+    department_id INT,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+-- Insert data into departments
+INSERT INTO departments (department_id, department_name) VALUES
+(1, 'HR'),
+(2, 'Finance'),
+(3, 'Engineering');
+
+-- Insert data into employees
+INSERT INTO employees (employee_id, employee_name, department_id) VALUES
+(1, 'Alice', 1),
+(2, 'Bob', 2),
+(3, 'Charlie', 3),
+(4, 'David', NULL);
+
+-- Perform different types of joins
+
+-- Inner Join
+SELECT employees.employee_id, employees.employee_name, departments.department_name
+FROM employees
+INNER JOIN departments ON employees.department_id = departments.department_id;
+
+-- Left Join
+SELECT employees.employee_id, employees.employee_name, departments.department_name
+FROM employees
+LEFT JOIN departments ON employees.department_id = departments.department_id;
+
+-- Right Join
+SELECT employees.employee_id, employees.employee_name, departments.department_name
+FROM employees
+RIGHT JOIN departments ON employees.department_id = departments.department_id;
+
+-- Full Join
+SELECT employees.employee_id, employees.employee_name, departments.department_name
+FROM employees
+FULL OUTER JOIN departments ON employees.department_id = departments.department_id;
