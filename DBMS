@@ -26,7 +26,6 @@ INSERT INTO employees (employee_id, employee_name, department_id) VALUES
 (4, 'David', NULL);
 
 -- Perform different types of joins
-
 -- Inner Join
 SELECT employees.employee_id, employees.employee_name, departments.department_name
 FROM employees
@@ -46,3 +45,45 @@ RIGHT JOIN departments ON employees.department_id = departments.department_id;
 SELECT employees.employee_id, employees.employee_name, departments.department_name
 FROM employees
 FULL OUTER JOIN departments ON employees.department_id = departments.department_id;
+
+
+--------------------------------------------
+
+a) Write a PL/SQL block for Addition of Two Numbers.
+Here's a PL/SQL block for adding two numbers:
+SET SERVEROUTPUT ON;
+
+DECLARE
+    num1 NUMBER := 10;
+    num2 NUMBER := 20;
+    sum NUMBER;
+BEGIN
+    sum := num1 + num2;
+    DBMS_OUTPUT.PUT_LINE('The sum of ' || num1 || ' and ' || num2 || ' is: ' || sum);
+END;
+/
+
+--------------------------------------------
+
+B) b) Write a PL/SQL block for IF, IF and else condition.
+Here's a PL/SQL block demonstrating IF and IF-ELSE conditions:
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+    num1 NUMBER := 10;
+    num2 NUMBER := 20;
+BEGIN
+    -- IF condition
+    IF num1 > num2 THEN
+        DBMS_OUTPUT.PUT_LINE(num1 || ' is greater than ' || num2);
+    END IF;
+
+    -- IF-ELSE condition
+    IF num1 < num2 THEN
+        DBMS_OUTPUT.PUT_LINE(num1 || ' is less than ' || num2);
+    ELSE
+        DBMS_OUTPUT.PUT_LINE(num1 || ' is not less than ' || num2);
+    END IF;
+END;
+/
